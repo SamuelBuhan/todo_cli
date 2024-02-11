@@ -24,11 +24,18 @@ def main():
 def add_task(task):
     with open(TODO_FILE, "a") as f:
         f.write(task + "\n")
-    print(f"add {task} in file")
+    print(f"Add {task} in file")
 
 def remove_task(task_number):
-    
-    pass
+    with open(TODO_FILE, "r") as f:
+        tasks = f.readlines()
+    if 0 <= task_number <= len(tasks):
+        del tasks[task_number-1]
+        with open(TODO_FILE, "w") as f:
+            f.writelines(tasks)
+        print(f"Task {task_number} removed.")
+    else:
+        print("Task number is out of range.")
 
 def list_tasks():
     pass
