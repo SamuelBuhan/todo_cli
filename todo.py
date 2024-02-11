@@ -38,7 +38,12 @@ def remove_task(task_number):
         print("Task number is out of range.")
 
 def list_tasks():
-    pass
+    with open(TODO_FILE, "r") as f:
+        tasks = f.readlines()
+    
+    for idx, task in enumerate(tasks, start=1):
+        print(f"{idx}. {task.strip()}")
+
 
 if __name__ == "__main__":
     main()
